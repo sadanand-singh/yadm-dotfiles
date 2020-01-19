@@ -1,0 +1,31 @@
+[user]
+    name = "Sadanand Singh"
+    email = "sadanand4singh@gmail.com"
+[color]
+    ui = auto
+[status]
+    showuntrackedfiles = no
+[alias]
+    gist = log --graph --oneline --all --decorate --date-order
+    find = log --graph --oneline --all --decorate --date-order --regexp-ignore-case --extended-regexp --grep
+    rfind = log --graph --oneline --all --decorate --date-order --regexp-ignore-case --extended-regexp --invert-grep --grep
+    search = grep --line-number --ignore-case -E -I
+[pager]
+    status = true
+[push]
+    default = matching
+[diff]
+    tool = vscode
+[difftool]
+    prompt = false
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+    trustExitCode = false
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[help]
+    autocorrect = 1
+[include]
+    path = .gitconfig.local
