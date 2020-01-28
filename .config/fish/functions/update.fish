@@ -13,5 +13,4 @@ function update -d "update brew, fish, fisher and mac app store"
     echo 'checking Apple Updates'
     /usr/sbin/softwareupdate -ia
 
-    exit 0
 end
