@@ -34,7 +34,7 @@ zflai-assert() { mylogs+=( "$4"${${${1:#$2}:+FAIL}:-OK}": $3" ); }
     export LSCOLORS=dxfxcxdxbxegedabagacad CLICOLOR="1"
 }
 
-export EDITOR="nvim" LESS="-iRFX" CVS_RSH="ssh"
+export EDITOR="nvim" VISUAL="nvim" LESS="-iRFX" CVS_RSH="ssh"
 
 umask 022
 
@@ -62,7 +62,7 @@ autoload up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-bindkey -v
+bindkey -e
 
 key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
@@ -122,8 +122,6 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-
-#url_quote_commands=(links wget youtube-dl curl); zstyle -e :urlglobber url-other-schema '[[ $url_quote_commands[(i)$words[1]] -le ${#url_quote_commands} ]] && reply=("*") || reply=(http https ftp ssh)'
 
 #
 # Aliases
@@ -502,7 +500,7 @@ zinit wait lucid \
 
 # zsh-startify, a vim-startify like plugin
 : zinit wait"0b" lucid atload"zsh-startify" for zdharma/zsh-startify
-: zinit wait lucid pick"manydots-magic" compile"manydots-magic" for knu/zsh-manydots-magic
+zinit wait lucid pick"manydots-magic" compile"manydots-magic" for knu/zsh-manydots-magic
 
 # fzy
 zinit wait"1" lucid as"program" pick"$ZPFX/bin/fzy*" \
@@ -589,11 +587,6 @@ zinit wait"2" lucid as"null" from"gh-r" for \
     mv"fd* -> fd" sbin"fd/fd"  @sharkdp/fd \
     sbin junegunn/fzf-bin
 
-# vramsteg
-zinit wait"2" lucid as"null" sbin"src/vramsteg" \
- atclone'cmake .' atpull'%atclone' make for \
-    psprint/vramsteg-zsh
-
 # A few wait'2' plugins
 zinit wait"2" lucid for \
     zdharma/declare-zsh \
@@ -625,18 +618,6 @@ zinit as"null" wait"3" lucid for \
     sbin"bin/git-dsf;bin/diff-so-fancy" zdharma/zsh-diff-so-fancy \
     sbin"git-url;git-guclone" make"GITURL_NO_CGITURL=1" zdharma/git-url
 
-# fbterm
-: zinit wait"3" lucid as"command" \
- pick"$ZPFX/bin/fbterm" \
- dl"https://bugs.archlinux.org/task/46860?getfile=13513 -> ins.patch" \
- dl"https://aur.archlinux.org/cgit/aur.git/plain/0001-Fix-build-with-gcc-6.patch?h=fbterm-git" \
- patch"ins.patch; 0001-Fix-build-with-gcc-6.patch" \
- atclone"./configure --prefix=$ZPFX" \
- atpull"%atclone" \
- make"install" reset for \
-    izmntuk/fbterm
-
-
 # Notifications, configured to use zconvey
 : zinit wait lucid for marzocchi/zsh-notify
 
@@ -654,7 +635,7 @@ zinit load romkatv/powerlevel10k
 #
 
 zle -N znt-kill-widget
-bindkey "^Y" znt-kill-widget
+bindkey "^[kk" znt-kill-widget
 
 cdpath=( "$HOME" "$HOME/Projects" "$HOME/Downloads" "$HOME/Projects/reckoning.dev" )
 
@@ -662,6 +643,9 @@ zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 zstyle ":completion:*:descriptions" format "%B%d%b"
 zstyle ':completion:*:*:*:default' menu yes select search
+zstyle ':completion:*' completer _complete _correct _approximate
+zstyle ':completion:*' max-errors 3 numeric
+zstyle ':completion::complete:*' gain-privileges 1
 #zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”
 
 function double-accept { deploy-code "BUFFER[-1]=''"; }
