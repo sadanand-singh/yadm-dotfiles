@@ -129,20 +129,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 # Aliases
 #
 
-_prompt_yadm_status () {
-    case $(cat ~/.yadm/.status) in
-        (1)
-            print -P '%B%F{magenta}There are local configuration changes. Yadm sync required.%f%b'
-            ;;
-        (2)
-            print -P '%B%F{magenta}Run yadm push.%f%b'
-            ;;
-    esac
-}
-
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _prompt_yadm_status
-
 alias gcc9=gcc-9
 alias vi=nvim
 alias vim=nvim
@@ -597,6 +583,10 @@ zinit wait lucid for \
 # k
 zinit ice wait lucid
 zinit load 'supercrabtree/k'
+
+# tmux session manager
+zinit ice wait lucid
+zplugin light "RobertAudi/tsm"
 
 # zsh-extract
 zinit ice wait lucid
