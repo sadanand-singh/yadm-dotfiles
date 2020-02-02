@@ -46,7 +46,7 @@ setopt interactive_comments hist_ignore_dups  octal_zeroes   no_prompt_cr
 setopt no_hist_no_functions no_always_to_end  append_history list_packed
 setopt inc_append_history   complete_in_word  no_auto_menu   auto_pushd
 setopt pushd_ignore_dups    no_glob_complete  no_glob_dots   c_bases
-setopt numeric_glob_sort    no_share_history  promptsubst    auto_cd
+setopt numeric_glob_sort    share_history  promptsubst    auto_cd
 setopt rc_quotes            extendedglob      notify         correct_all
 
 #setopt IGNORE_EOF
