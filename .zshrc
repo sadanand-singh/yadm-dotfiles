@@ -330,8 +330,7 @@ fi
 
 unset altxt
 
-fpath+=( $HOME/.zsh_functions /usr/local/share/zsh-completions /Users/sadanand/Projects/conda-zsh-completion)
-autoload -Uz compinit && compinit
+fpath+=( $HOME/.zsh_functions)
 
 autoload -Uz psprobe_host   psffconv    pssetup_ssl_cert    psrecompile    pscopy_xauth  \
              psls           pslist      psfind \
@@ -523,35 +522,34 @@ zinit wait lucid for \
     hlissner/zsh-autopair \
     urbainvaes/fzf-marks
 
-# k
+# aditional plugins
 zinit ice wait lucid
-zinit load 'supercrabtree/k'
+zinit light 'supercrabtree/k'
 
-# tmux session manager
 zinit ice wait lucid
-zplugin light "RobertAudi/tsm"
+zinit light 'agkozak/zsh-z'
 
-# zsh-extract
 zinit ice wait lucid
-zinit load 'le0me55i/zsh-extract'
+zinit light 'wookayin/fzf-fasd'
+
+zinit ice wait lucid
+zinit light 'RobertAudi/tsm'
+
+zinit ice wait lucid
+zinit light 'le0me55i/zsh-extract'
+
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    'esc/conda-zsh-completion'
 
 # code stats
 CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
-zplugin ice from"gitlab"
-zplugin light "code-stats/code-stats-zsh"
+zinit ice from"gitlab"
+zinit light "code-stats/code-stats-zsh"
 
 #nvm
 export NVM_LAZY_LOAD=true
 zinit ice wait lucid
-zinit load 'lukechilds/zsh-nvm'
-
-# zsh-z plugin
-zinit ice wait lucid
-zinit load "agkozak/zsh-z"
-
-# fzf-fasd
-zinit ice wait lucid
-zinit load  "wookayin/fzf-fasd"
+zinit light 'lukechilds/zsh-nvm'
 
 # A few wait1 plugins
 zinit wait"1" lucid for \
