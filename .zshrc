@@ -36,6 +36,12 @@ zflai-assert() { mylogs+=( "$4"${${${1:#$2}:+FAIL}:-OK}": $3" ); }
 
 export EDITOR="nvim" VISUAL="nvim" LESS="-iRFX" CVS_RSH="ssh"
 
+if [[ ! -d "$TMPDIR" ]]; then
+  export TMPDIR="$(mktemp -d)"
+fi
+
+TMPPREFIX="${TMPDIR%/}/zsh"
+
 umask 022
 
 #
@@ -133,6 +139,11 @@ alias vim=nvim
 alias updateBrew="brew update && brew upgrade && brew cleanup && brew cask cleanup"
 alias update='brew update; brew upgrade; brew cleanup; brew doctor; /usr/sbin/softwareupdate -ia'
 alias sq_summary='ssh wg-sadanand@10.27.119.121 python3 /storage/group/whiterabbit/slurm-summary/sq_summary.py'
+
+function mkcd() {
+    mkdir -p $1
+    cd $1
+}
 
 function pyclean() {
     ZSH_PYCLEAN_PLACES=${*:-'.'}
@@ -641,7 +652,7 @@ cdpath=( "$HOME" "$HOME/Projects" "$HOME/Downloads" "$HOME/Projects/reckoning.de
 
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
-zstyle ":completion:*:descriptions" format "%B%d%b"
+zstyle ':completion:*:descriptions' format $'%{\e[0;33m%} %B%d%b%{\e[0m%}'
 zstyle ':completion:*:*:*:default' menu yes select search
 zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' max-errors 3 numeric
