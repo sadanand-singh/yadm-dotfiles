@@ -7,8 +7,13 @@ SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR --export PAGER:less
+SETUVAR --export PROJECT_PATHS:/Users/sadanand/Projects/\x1e/Users/sadanand/Downloads/
 SETUVAR --export VISUAL:nvim
+SETUVAR ZO_CMD:zo
+SETUVAR Z_CMD:z
+SETUVAR Z_DATA:/Users/sadanand/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/Users/sadanand/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:/Users/sadanand
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
@@ -40,4 +45,4 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/Users/sadanand/\x2econfig/nvm/12\x2e14\x2e1/bin\x1e/Users/sadanand/opt/anaconda3/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin/
+SETUVAR fish_user_paths:/Users/sadanand/opt/anaconda3/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin/

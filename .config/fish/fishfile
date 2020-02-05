@@ -1,6 +1,9 @@
 oh-my-fish/plugin-brew
 oh-my-fish/plugin-extract
 oh-my-fish/plugin-osx
+oh-my-fish/plugin-pj
+oh-my-fish/plugin-fasd
+oh-my-fish/plugin-bang-bang
 jorgebucaran/fish-bax
 jethrokuan/fzf
 jorgebucaran/fish-nvm
@@ -9,3 +12,5 @@ oh-my-fish/plugin-grc
 sadanand-singh/fish-sodope
 oh-my-fish/theme-bobthefish
 acomagu/fish-async-prompt
+jethrokuan/z
+markcial/upto
