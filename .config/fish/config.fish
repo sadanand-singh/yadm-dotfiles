@@ -6,7 +6,7 @@ set -g theme_display_git_untracked yes
 set -g theme_display_git_dirty yes
 set -g theme_display_nvm no
 set -g theme_display_virtualenv yes
-set -g theme_color_scheme nord
+set -g theme_color_scheme zenburn
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

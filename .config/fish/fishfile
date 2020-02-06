@@ -1,7 +1,12 @@
 oh-my-fish/theme-bobthefish
 oh-my-fish/plugin-extract
 jorgebucaran/fish-bax
+oh-my-fish/plugin-pj
+oh-my-fish/plugin-fasd
+oh-my-fish/plugin-bang-bang
 jethrokuan/fzf
 jorgebucaran/fish-nvm
-oh-my-fish/plugin-grc
 sadanand-singh/fish-sodope
+jethrokuan/z
+markcial/upto
+acomagu/fish-async-prompt
