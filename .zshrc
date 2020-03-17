@@ -551,9 +551,9 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     'esc/conda-zsh-completion'
 
 # code stats
-CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
-zinit ice from"gitlab"
-zinit light "code-stats/code-stats-zsh"
+#CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
+#zinit ice from"gitlab"
+#zinit light "code-stats/code-stats-zsh"
 
 #nvm
 export NVM_LAZY_LOAD=true
