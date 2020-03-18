@@ -236,7 +236,6 @@ alias n1ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\
 alias n1sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias n1httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-
 #
 # General tools
 #
@@ -294,10 +293,32 @@ function pbcopydir {
   pwd | tr -d "\r\n" | pbcopy
 }
 
+function ip {
+    curl -Ss icanhazip.com
+}
+
+function ips {
+    ifconfig | grep "inet " | awk '{ print $2 }'
+    echo "External: $(ip)"
+}
+
 function from-where {
     echo $^fpath/$_comps[$1](N)
     whence -v $_comps[$1]
     #which $_comps[$1] 2>&1 | head
+}
+
+function lsgrep {
+    export needle=$(echo $1 | sed -E 's/\.([a-z0-9]+)$/\\.\1/' | sed -E 's/\?/./' | sed -E 's/[ *]/.*?/g')
+    command ag --depth 3 -S -g "$needle" 2>/dev/null
+}
+
+function lt {
+    ls -Atr1 $1 && echo "⇡⎽⎽⎽⎽Newest⎽⎽⎽⎽⇡"
+}
+
+function ltr {
+    ls -At1 $1 && echo "⇡⎽⎽⎽⎽Oldest⎽⎽⎽⎽⇡"
 }
 
 whichcomp() {
@@ -532,8 +553,6 @@ zinit wait"2" lucid for \
  blockf \
     zdharma/zui \
     zinit-zsh/zinit-console \
- trigger-load'!crasis' \
-    zdharma/zinit-crasis \
  atinit"forgit_ignore='fgi'" \
     wfxr/forgit
 
@@ -551,7 +570,6 @@ zinit as"null" wait"3" lucid for \
     sbin davidosomething/git-my \
     sbin atload"export _MENU_THEME=legacy" \
         arzzen/git-quick-stats \
-    sbin iwata/git-now \
     make"PREFIX=$ZPFX"         tj/git-extras \
     sbin"bin/git-dsf;bin/diff-so-fancy" zdharma/zsh-diff-so-fancy \
     sbin"git-url;git-guclone" make"GITURL_NO_CGITURL=1" zdharma/git-url
