@@ -137,6 +137,8 @@ function mkcd() {
 
 function update() {
     echo 'start updating ...'
+    zinit self-update
+    zinit update -p
 
     echo 'updating Ubuntu'
     sudo apt update
