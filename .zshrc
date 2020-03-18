@@ -604,20 +604,6 @@ zinit wait"1" lucid for \
  atinit"local zew_word_style=whitespace" \
     psprint/zsh-editing-workbench
 
-# Github-Issue-Tracker – the notifier thread
-zinit lucid id-as"GitHub-notify" \
- on-update-of'~/.cache/zsh-github-issues/new_titles.log' \
- notify'New issue: $NOTIFY_MESSAGE' for \
-    zdharma/zsh-github-issues
-
-# Github-Issue-Tracker – the issue-puller thread
-GIT_SLEEP_TIME=700
-GIT_PROJECTS=zdharma/zsh-github-issues:zdharma/zinit
-
-zinit wait"2" lucid service"GIT" \
- pick"zsh-github-issues.service.zsh" for \
-    zdharma/zsh-github-issues
-
 # Gitignore plugin – commands gii and gi
 zinit wait"2" lucid trigger-load'!gi;!gii' \
  dl'https://gist.githubusercontent.com/psprint/1f4d0a3cb89d68d3256615f247e2aac9/raw -> templates/Zsh.gitignore' \
