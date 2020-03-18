@@ -392,6 +392,19 @@ function from-where {
     #which $_comps[$1] 2>&1 | head
 }
 
+function lsgrep {
+    export needle=$(echo $1 | sed -E 's/\.([a-z0-9]+)$/\\.\1/' | sed -E 's/\?/./' | sed -E 's/[ *]/.*?/g')
+    command ag --depth 3 -S -g "$needle" 2>/dev/null
+}
+
+function lt {
+    ls -Atr1 $1 && echo "⇡⎽⎽⎽⎽Newest⎽⎽⎽⎽⇡"
+}
+
+function ltr {
+    ls -At1 $1 && echo "⇡⎽⎽⎽⎽Oldest⎽⎽⎽⎽⇡"
+}
+
 whichcomp() {
     for 1; do
         ( print -raC 2 -- $^fpath/${_comps[$1]:?unknown command}(NP*$1*) )
@@ -401,7 +414,6 @@ whichcomp() {
 osxnotify() {
     osascript -e 'display notification "'"$*"'"'
 }
-
 
 localbin_on
 
@@ -575,9 +587,9 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     'esc/conda-zsh-completion'
 
 # code stats
-#CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
-#zinit ice from"gitlab"
-#zinit light "code-stats/code-stats-zsh"
+CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
+zinit ice from"gitlab"
+zinit light "code-stats/code-stats-zsh"
 
 #nvm
 export NVM_LAZY_LOAD=true
