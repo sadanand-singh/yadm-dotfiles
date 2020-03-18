@@ -136,8 +136,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 alias gcc9=gcc-9
 alias vi=nvim
 alias vim=nvim
-alias updateBrew="brew update && brew upgrade && brew cleanup && brew cask cleanup"
-alias update='brew update; brew upgrade; brew cleanup; brew doctor; /usr/sbin/softwareupdate -ia'
 alias sq_summary='ssh wg-sadanand@10.27.119.121 python3 /storage/group/whiterabbit/slurm-summary/sq_summary.py'
 
 function mkcd() {
@@ -360,6 +358,32 @@ function run_diso {
 
 function pbcopydir {
   pwd | tr -d "\r\n" | pbcopy
+}
+
+function ip {
+    curl -Ss icanhazip.com
+}
+
+function ips {
+    ifconfig | grep "inet " | awk '{ print $2 }'
+    echo "External: $(ip)"
+}
+
+function update {
+    echo "update brew, fish, fisher and mac app store"
+    echo 'start updating ...'
+
+    echo 'updating homebrew'
+    brew update
+    brew upgrade
+    brew cleanup
+
+    echo 'updating zsh shell'
+    zinit self-update
+    zinit update -p
+
+    echo 'checking Apple Updates'
+    /usr/sbin/softwareupdate -ia
 }
 
 function from-where {
@@ -605,8 +629,6 @@ zinit wait"2" lucid for \
  blockf \
     zdharma/zui \
     zinit-zsh/zinit-console \
- trigger-load'!crasis' \
-    zdharma/zinit-crasis \
  atinit"forgit_ignore='fgi'" \
     wfxr/forgit
 
@@ -624,7 +646,6 @@ zinit as"null" wait"3" lucid for \
     sbin davidosomething/git-my \
     sbin atload"export _MENU_THEME=legacy" \
         arzzen/git-quick-stats \
-    sbin iwata/git-now \
     make"PREFIX=$ZPFX"         tj/git-extras \
     sbin"bin/git-dsf;bin/diff-so-fancy" zdharma/zsh-diff-so-fancy \
     sbin"git-url;git-guclone" make"GITURL_NO_CGITURL=1" zdharma/git-url
