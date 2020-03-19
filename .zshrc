@@ -678,6 +678,8 @@ zstyle ':completion:*' max-errors 3 numeric
 zstyle ':completion::complete:*' gain-privileges 1
 #zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”
 
+source /Users/sadanand/.zinit/plugins/tj---git-extras/etc/git-extras-completion.zsh
+
 function double-accept { deploy-code "BUFFER[-1]=''"; }
 zle -N double-accept
 bindkey -M menuselect '^F' history-incremental-search-forward
