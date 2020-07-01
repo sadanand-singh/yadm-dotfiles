@@ -42,6 +42,7 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
+
 umask 022
 
 #
@@ -370,7 +371,7 @@ function ips {
 }
 
 function update {
-    echo "update brew, fish, fisher and mac app store"
+    echo "update brew, zsh, zinit and mac app store"
     echo 'start updating ...'
 
     echo 'updating homebrew'
@@ -535,10 +536,6 @@ zinit wait"2" lucid as"program" pick"revolver" for psprint/revolver
  atpull'%atclone' pick"c.zsh" nocompile'!' \
  atload'zstyle ":completion:*:default" list-colors "${(s.:.)LS_COLORS}";' for \
     trapd00r/LS_COLORS
-
-zinit wait"0c" lucid \
- atload'zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}";' for \
-    zpm-zsh/dircolors-material
 
 # Zconvey shell integration plugin
 zinit wait lucid \
