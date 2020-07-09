@@ -237,7 +237,7 @@ alias calc="bc_convert"
 
 alias pl='print -rl --'
 #alias ls="gls -bh --color=auto"
-alias py36="conda activate py36-dev"
+alias py37="conda activate py37-dev"
 alias ls="exa -bh --color=auto"
 alias k="k -A"
 alias l.='ls -d .*'   la='ls -lah'   ll='ls -lbt created'  l='la' rm='command rm -i'
@@ -693,7 +693,7 @@ zflai-msg "[zshrc] Finishing, loaded custom modules: ${(j:, :@)${(k)modules[@]}:
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/sadanand/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/sadanand/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
