@@ -237,7 +237,7 @@ alias calc="bc_convert"
 
 alias pl='print -rl --'
 #alias ls="gls -bh --color=auto"
-alias py37="conda activate py37-dev"
+alias py37="pyenv activate py37-dev"
 alias ls="exa -bh --color=auto"
 alias k="k -A"
 alias l.='ls -d .*'   la='ls -lah'   ll='ls -lbt created'  l='la' rm='command rm -i'
@@ -566,6 +566,9 @@ zinit wait lucid for \
 
 # aditional plugins
 zinit ice wait lucid
+zinit light 'mattberther/zsh-pyenv'
+
+zinit ice wait lucid
 zinit light 'supercrabtree/k'
 
 zinit ice wait lucid
@@ -690,21 +693,6 @@ zflai-msg "[zshrc] Finishing, loaded custom modules: ${(j:, :@)${(k)modules[@]}:
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/sadanand/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/sadanand/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/sadanand/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/sadanand/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -720,4 +708,5 @@ path=(
   $path
 )
 
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH
