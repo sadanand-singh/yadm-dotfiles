@@ -238,7 +238,12 @@ alias calc="bc_convert"
 alias pl='print -rl --'
 #alias ls="gls -bh --color=auto"
 alias py37="pyenv activate py37-dev"
-alias ls="exa -bh --color=auto"
+# alias ls="exa -bh --color=auto"
+alias ls='lsd -l'
+alias l='lsd -l'
+alias la='ls -lah'
+alias lla='ls -lah'
+alias lt='ls --tree'
 alias k="k -A"
 alias l.='ls -d .*'   la='ls -lah'   ll='ls -lbt created'  l='la' rm='command rm -i'
 alias df='df -h'  du='du -h'      cp='cp -v'   mv='mv -v'      plast="last -20"
@@ -322,21 +327,21 @@ alias slocate='locate'
 alias updatedb="sudo /usr/libexec/locate.updatedb"
 
 # alias ls=psls ... - retain ls options but substitute the command with psls
-if altxt=`alias ls`; then
-    altxt="${altxt#alias }" # for sh
-    if [ "$altxt" != "${altxt#ls=\'(ls|exa)}" ]; then
-        altxt=${altxt#ls=\'exa}
-        altxt=${altxt%\'}
-        altxt="ls=psls$altxt"
-        alias "$altxt"
-        zflai-msg "[zshrc] \`ls' alias: $altxt"
-    fi
-else
-    alias ls="psls"
-    zflai-msg "[zshrc] \`ls' alias: ls=psls"
-fi
+# if altxt=`alias ls`; then
+#     altxt="${altxt#alias }" # for sh
+#     if [ "$altxt" != "${altxt#ls=\'(ls|exa)}" ]; then
+#         altxt=${altxt#ls=\'exa}
+#         altxt=${altxt%\'}
+#         altxt="ls=psls$altxt"
+#         alias "$altxt"
+#         zflai-msg "[zshrc] \`ls' alias: $altxt"
+#     fi
+# else
+#     alias ls="psls"
+#     zflai-msg "[zshrc] \`ls' alias: ls=psls"
+# fi
 
-unset altxt
+# unset altxt
 
 fpath+=( $HOME/.zsh_functions)
 
