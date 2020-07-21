@@ -1266,7 +1266,7 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>496 486 799 448 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>370 199 1162 699 0 0 1792 1097 </string>
+	<string>317 240 1194 731 0 0 1792 1097 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1837,11 +1837,11 @@
 			<key>Normal Font</key>
 			<string>HackNerdFontCompleteM-Regular 13</string>
 			<key>Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Rows</key>
 			<integer>44</integer>
 			<key>Screen</key>
@@ -1914,7 +1914,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>D45073AD-0AA3-4D89-963A-D03701215A4B</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>3</integer>
+	<integer>18</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2266,6 +2266,14 @@
 				<true/>
 				<key>name</key>
 				<string>currentTab.currentSession.termid</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentTab.currentSession.terminalIconName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2661,7 +2669,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-07-18T04:59:11Z</date>
+	<date>2020-07-19T17:10:47Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SoundForEsc</key>
@@ -2674,5 +2682,7 @@
 	<false/>
 	<key>iTerm Version</key>
 	<string>3.3.12</string>
+	<key>preferIntegratedGPU</key>
+	<false/>
 </dict>
 </plist>
