@@ -1,5 +1,0 @@
-# DESC: Tests if $PATH contains /opt/local/bin
-
-[[ -n "${(j::)${(M)path[@]:#/opt/local/bin}}" ]]
-
-# vim:ft=zsh:et
