@@ -1,3 +1,3 @@
 function ls
-    command exa -bh --color=auto $argv
+    command lsd --color=auto $argv
 end

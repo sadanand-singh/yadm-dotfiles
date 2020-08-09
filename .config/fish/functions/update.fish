@@ -3,6 +3,7 @@ function update -d "update brew, fish, fisher and mac app store"
 
     echo 'updating homebrew'
     brew update
+    brew upgrade asdf
     brew upgrade
     brew cleanup
 

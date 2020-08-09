@@ -1,1 +1,1 @@
-complete -xc chrome -d "HTML File" -a "*.{html,htm}"
+complete -xc brave -d "HTML File" -a "*.{html,htm}"
