@@ -5,6 +5,7 @@ oh-my-fish/plugin-pj
 oh-my-fish/plugin-fasd
 oh-my-fish/plugin-bang-bang
 oh-my-fish/plugin-pyenv
+patrickf3139/fzf.fish
 laughedelic/brew-completions
 sadanand-singh/fish-sodope
 jethrokuan/z

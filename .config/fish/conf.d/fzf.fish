@@ -1,15 +1,26 @@
-set -q FZF_TMUX_HEIGHT; or set -U FZF_TMUX_HEIGHT "40%"
-set -q FZF_DEFAULT_OPTS; or set -U FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT"
-set -q FZF_LEGACY_KEYBINDINGS; or set -U FZF_LEGACY_KEYBINDINGS 1
-set -q FZF_DISABLE_KEYBINDINGS; or set -U FZF_DISABLE_KEYBINDINGS 0
-set -q FZF_PREVIEW_FILE_CMD; or set -U FZF_PREVIEW_FILE_CMD "head -n 10"
-set -q FZF_PREVIEW_DIR_CMD; or set -U FZF_PREVIEW_DIR_CMD "ls"
+# Set up the default, mnemonic keybindings unless the user has chosen to customize them
+if not set --query fzf_fish_custom_keybindings
+    # \cf is ctrl+f, etc.
+    bind \cf '__fzf_search_current_dir'
+    bind \ck '__fzf_search_git_log'
+    bind \cr '__fzf_search_history'
+    bind \cv '__fzf_search_shell_variables'
 
-function fzf_uninstall -e fzf_uninstall
-    # disabled until we figure out a sensible way to ensure user overrides
-    # are not erased
-    # set -l _vars (set | command grep -E "^FZF.*\$" | command awk '{print $1;}')
-    # for var in $_vars
-    #     eval (set -e $var)
-    # end
+    # set up the same keybindings for insert mode if using fish_vi_key_bindings
+    if [ $fish_key_bindings = 'fish_vi_key_bindings' ]
+        bind --mode insert \cf '__fzf_search_current_dir'
+        bind --mode insert \ck '__fzf_search_git_log'
+        bind --mode insert \cr '__fzf_search_history'
+        bind --mode insert \cv '__fzf_search_shell_variables'
+    end
+end
+
+# If FZF_DEFAULT_OPTS is not set, then set some sane defaults. This also affects fzf outside of this plugin.
+# See https://github.com/junegunn/fzf#environment-variables
+if not set --query FZF_DEFAULT_OPTS
+    # cycle makes scrolling easier
+    # reverse layout is more familiar as it mimicks the layout of git log, history, and env
+    # border makes clear where the fzf window ends
+    # height 75% allows you to view what you were doing and stay in context of your work
+    set --export FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height 75%'
 end
