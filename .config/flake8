@@ -1,0 +1,5 @@
+[flake8]
+ignore = E203
+max-line-length = 99
+exclude = .git,__pycache__,.direnv,node_modules,.pytest_cache
+max-complexity = 10
