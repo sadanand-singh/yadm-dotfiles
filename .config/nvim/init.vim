@@ -6,7 +6,8 @@ endfunction
 " Install plugins
 call plug#begin()
 " Utility
-Plug 'w0rp/ale' " Asynchronous Lint Engine.
+Plug 'dense-analysis/ale' " Asynchronous Lint Engine.
+Plug 'psf/black', { 'branch': 'stable' } " Black python formatter
 Plug 'romainl/vim-cool' " Stop matching after search is done.
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 Plug 'scrooloose/nerdcommenter' " Quick comments.
@@ -196,6 +197,12 @@ autocmd VimLeave * set guicursor=a:ver25-blinkon25 " Make cursor block when leav
 " Testing
 set signcolumn=yes
 set foldcolumn=0 " Remove sidebar column
+
+" Python
+autocmd BufWritePre *.py execute ':Black'
+nnoremap <F9> :Black<CR>
+let g:black_linelength = 99
+let g:black_skip_string_normalization = 1
 
 " only show active line number
 hi LineNr ctermfg=16 guifg=bg
