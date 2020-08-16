@@ -31,8 +31,7 @@ Plug 'tpope/vim-fugitive' " Git wrapper.
 Plug 'mhinz/vim-signify' " Show a diff using Vim its sign column.
 
 " Looks
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'sainnhe/sonokai' " Theme
 
 call plug#end()
@@ -132,12 +131,43 @@ endif
 let g:sonokai_style = 'shusia'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 1
-let g:airline_theme = 'sonokai'
-" let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'sonokai'
+" " let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
 " let g:airline_disable_statusline = 1
 
 colorscheme sonokai
+
+" Automatically open & close quickfix window
+autocmd QuickFixCmdPost [^l]* nested cwindow
+" lightline bar
+set laststatus=2
+let g:lightline = {
+\ 'colorscheme': 'powerline',
+\ 'active': {
+\ 'left':[ [ 'mode', 'paste' ],
+\ [ 'gitbranch', 'readonly', 'absolutepath','modified' ]
+\ ]
+\ },
+\ 'component': {
+\ 'lineinfo': ' %3l:%-2v%<'
+\ },
+\ 'component_function': {
+\ 'gitbranch': 'fugitive#head',
+\ }
+\ }
+let g:lightline.separator = {
+\ 'left': '', 'right': ''
+\}
+let g:lightline.subseparator = {
+\ 'left': '', 'right': ''
+\}
+let g:lightline.tabline = {
+\ 'left': [ ['tabs'] ],
+\ 'right': [ ['close'] ]
+\ }
+set showtabline=2 " Show tabline
+set guioptions-=e " Don't use GUI tabline
 
 " Bufferline
 let g:bufferline_echo = 0
