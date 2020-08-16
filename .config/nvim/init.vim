@@ -21,6 +21,7 @@ Plug 'junegunn/fzf.vim' " Fzf search.
 Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
 Plug 'easymotion/vim-easymotion' " Vim motions on speed.
 Plug 'thinca/vim-quickrun' " Run commands quickly.
+Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'json', 'markdown'] } " Prettier support
@@ -198,6 +199,11 @@ nmap <Leader>q    :q<CR>
 " Space w
 " Save
 nmap <Leader>w :w<CR>
+
+" NerdTree
+nmap <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Space y
 " Copy whole file
