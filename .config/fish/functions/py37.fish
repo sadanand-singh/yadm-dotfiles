@@ -1,3 +1,3 @@
 function py37 -d "activate py37-dev venv"
-  pyenv activate py37-dev
+  source /Users/sadanand/.pyenv/versions/py37-dev/bin/activate.fish
 end
