@@ -16,7 +16,7 @@ SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
 SETUVAR Z_DATA:/Users/sadanand/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/Users/sadanand/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:/Users/sadanand
+SETUVAR Z_EXCLUDE:\x5e/Users/sadanand\x24
 SETUVAR __fish_git_prompt_char_cleanstate:
 SETUVAR __fish_git_prompt_char_dirtystate:\x20\x21
 SETUVAR __fish_git_prompt_char_stagedstate:\x20\x2b
