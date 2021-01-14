@@ -677,7 +677,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  "/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin"
   /usr/local/opt/openssl@1.1/bin
   /usr/local/opt/openssl/bin
   /usr/local/opt/sqlite/bin
@@ -709,7 +709,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # conda liases
-alias py37="conda activate py37-dev"
-alias py38="conda activate base"
+alias py3="conda activate base"
 alias unload_py="conda deactivate"
 alias update_py="conda update --all"
