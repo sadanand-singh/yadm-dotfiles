@@ -7,7 +7,7 @@ function update -d "update brew, fish, fisher and mac app store"
     brew cleanup
 
     echo 'updating fish shell'
-    fisher
+    fisher update
     fish_update_completions
 
     echo 'checking Apple Updates'

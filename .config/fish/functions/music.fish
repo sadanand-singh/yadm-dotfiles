@@ -12,7 +12,7 @@ function music -d "Control Music. Use -h or --help for a more detailed descripti
       case vol volume
         set opt "set sound volume to $argv[2]"
       case "" -h --help
-        echo "Usage: itunes <option>"
+        echo "Usage: music <option>"
         echo "option:"
         echo \t"launch, play, pause, stop, rewind, resume, quit"
         echo \t"mute, unmute    Control volume set"

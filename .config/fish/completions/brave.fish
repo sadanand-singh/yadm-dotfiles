@@ -1,1 +1,0 @@
-complete -xc brave -d "HTML File" -a "*.{html,htm}"
