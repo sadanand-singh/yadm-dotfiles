@@ -5,19 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
-
 #
 # Exports
 #
@@ -136,6 +123,8 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 alias vi=nvim
 alias vim=nvim
+
+alias cat=bat
 
 function mkcd() {
     mkdir -p $1
@@ -287,7 +276,7 @@ alias x1flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias x1mute="osascript -e 'set volume output muted true'"
 alias x1lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-alias cask="brew cask"
+alias cask="arch -x86_64 brew cask"
 alias capc="screencapture -c"
 alias capic="screencapture -i -c"
 alias capiwc="screencapture -i -w -c"
@@ -454,54 +443,6 @@ zinit wait lucid for \
  atload"unalias grv g" \
     OMZ::plugins/git/git.plugin.zsh
 
-# Theme no. 1 - zprompts
-zinit lucid \
- load'![[ $MYPROMPT = 1 ]]' \
- unload'![[ $MYPROMPT != 1 ]]' \
- atload'!promptinit; typeset -g PSSHORT=0; prompt sprint3 yellow red green blue' \
- nocd for \
-    psprint/zprompts
-
-# Theme no. 2 – lambda-mod-zsh-theme
-zinit lucid load'![[ $MYPROMPT = 2 ]]' unload'![[ $MYPROMPT != 2 ]]' nocd for \
-    halfo/lambda-mod-zsh-theme
-
-# Theme no. 3 – lambda-gitster
-zinit lucid load'![[ $MYPROMPT = 3 ]]' unload'![[ $MYPROMPT != 3 ]]' nocd for \
-    ergenekonyigit/lambda-gitster
-
-# Theme no. 4 – geometry
-zinit lucid load'![[ $MYPROMPT = 4 ]]' unload'![[ $MYPROMPT != 4 ]]' \
- atload'!geometry::prompt' nocd \
- atinit'GEOMETRY_COLOR_DIR=63 GEOMETRY_PATH_COLOR=63' for \
-    geometry-zsh/geometry
-
-# Theme no. 5 – pure
-zinit lucid load'![[ $MYPROMPT = 5 ]]' unload'![[ $MYPROMPT != 5 ]]' \
- pick"/dev/null" multisrc"{async,pure}.zsh" atload'!prompt_pure_precmd' nocd for \
-    sindresorhus/pure
-
-# Theme no. 6 - agkozak-zsh-theme
-zinit lucid load'![[ $MYPROMPT = 6 ]]' unload'![[ $MYPROMPT != 6 ]]' \
- atload'!_agkozak_precmd' nocd atinit'AGKOZAK_FORCE_ASYNC_METHOD=subst-async' for \
-    agkozak/agkozak-zsh-theme
-
-# Theme no. 7 - zinc
-zinit load'![[ $MYPROMPT = 7 ]]' unload'![[ $MYPROMPT != 7 ]]' \
- compile"{zinc_functions/*,segments/*,zinc.zsh}" nocompletions \
- atload'!prompt_zinc_setup; prompt_zinc_precmd' nocd for \
-    robobenklein/zinc
-
-# Theme no. 8 - powerlevel10k
-zinit load'![[ $MYPROMPT = 8 ]]' unload'![[ $MYPROMPT != 8 ]]' \
- atload'!source ~/.p10k.zsh; _p9k_precmd' lucid nocd for \
-    romkatv/powerlevel10k
-
-# Theme no. 9 - git-prompt
-zinit lucid load'![[ $MYPROMPT = 9 ]]' unload'![[ $MYPROMPT != 9 ]]' \
- atload'!_zsh_git_prompt_precmd_hook' nocd for \
-    woefe/git-prompt.zsh
-
 # zunit, color
 zinit wait"2" lucid as"null" for \
  sbin atclone"./build.zsh" atpull"%atclone" \
@@ -630,9 +571,6 @@ zinit as"null" wait"3" lucid for \
 
 zflai-msg "[zshrc] Zplugin block took ${(M)$(( SECONDS * 1000 ))#*.?} ms"
 
-# powerlevel10k
-MYPROMPT=8
-
 # # Load within zshrc – for the instant prompt
 zinit atload'!source ~/.p10k.zsh' lucid nocd for romkatv/powerlevel10k
 
@@ -642,7 +580,7 @@ zinit atload'!source ~/.p10k.zsh' lucid nocd for romkatv/powerlevel10k
 zle -N znt-kill-widget
 bindkey "^[kk" znt-kill-widget
 
-cdpath=( "$HOME" "$HOME/Projects" "$HOME/Downloads" "$HOME/Projects/reckoning.dev" )
+cdpath=( "$HOME" "$HOME/Developer" "$HOME/Downloads" "$HOME/Developer/reckoning.dev" )
 
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
@@ -676,6 +614,7 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  /opt/homebrew/{bin,sbin}
   /usr/local/{bin,sbin}
   "/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin"
   /usr/local/opt/openssl@1.1/bin
