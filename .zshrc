@@ -616,7 +616,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /opt/homebrew/{bin,sbin}
   /usr/local/{bin,sbin}
-  "/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin"
+  "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
   /usr/local/opt/openssl@1.1/bin
   /usr/local/opt/openssl/bin
   /usr/local/opt/sqlite/bin
