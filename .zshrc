@@ -509,11 +509,6 @@ CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPk
 zinit ice from"gitlab"
 zinit light "code-stats/code-stats-zsh"
 
-#nvm
-export NVM_LAZY_LOAD=true
-zinit ice wait lucid
-zinit light 'lukechilds/zsh-nvm'
-
 # A few wait1 plugins
 zinit wait"1" lucid for \
     psprint/zsh-navigation-tools \
@@ -634,14 +629,14 @@ export PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/sadanand/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/sadanand/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/sadanand/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/sadanand/opt/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/sadanand/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/sadanand/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/sadanand/opt/anaconda3/bin:$PATH"
+        export PATH="/Users/sadanand/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
