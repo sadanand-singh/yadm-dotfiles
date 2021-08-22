@@ -1,13 +1,9 @@
 # Created by newuser for 5.7.1
 
-# Enable Powerlevel10k instant prompt. Should stay at the top of ~/.zshrc.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 #
 # Exports
 #
+source /opt/homebrew/etc/profile.d/z.sh
 
 module_path+=("$HOME/.zinit/bin/zmodules/Src"); zmodload zdharma/zplugin &>/dev/null
 
@@ -242,6 +238,8 @@ alias g1log_branches="git log --color=always --oneline --decorate --graph --bran
 alias g1log_branches_intag="echo You can append a tag name; LANG=C sleep 0.5; git log --color=always --oneline --decorate --graph --branches"
 alias g1log_simplify_decfull="git log --color=always --decorate=full --simplify-by-decoration"
 alias g1log_simplify="git log --color=always --simplify-by-decoration --decorate"
+
+alias ray="~/Developer/raycast-api/api/bin/arm64/ray"
 
 # Image Magick
 alias i1montage_concat_topbo_black="montage -mode concatenate -tile 1x -background black"
@@ -485,12 +483,14 @@ zinit wait lucid for \
     hlissner/zsh-autopair \
     urbainvaes/fzf-marks
 
+
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
+zstyle :prompt:pure:git:stash show yes
+
 # aditional plugins
 zinit ice wait lucid
 zinit light 'supercrabtree/k'
-
-zinit ice wait lucid
-zinit light 'agkozak/zsh-z'
 
 zinit ice wait lucid
 zinit light 'wookayin/fzf-fasd'
@@ -566,8 +566,6 @@ zinit as"null" wait"3" lucid for \
 
 zflai-msg "[zshrc] Zplugin block took ${(M)$(( SECONDS * 1000 ))#*.?} ms"
 
-# # Load within zshrc – for the instant prompt
-zinit atload'!source ~/.p10k.zsh' lucid nocd for romkatv/powerlevel10k
 
 # Zstyles & other
 #
@@ -609,6 +607,7 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  /Library/TeX/texbin
   /opt/homebrew/{bin,sbin}
   /usr/local/{bin,sbin}
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
