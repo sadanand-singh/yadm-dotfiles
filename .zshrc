@@ -239,8 +239,6 @@ alias g1log_branches_intag="echo You can append a tag name; LANG=C sleep 0.5; gi
 alias g1log_simplify_decfull="git log --color=always --decorate=full --simplify-by-decoration"
 alias g1log_simplify="git log --color=always --simplify-by-decoration --decorate"
 
-alias ray="~/Developer/raycast-api/api/bin/arm64/ray"
-
 # Image Magick
 alias i1montage_concat_topbo_black="montage -mode concatenate -tile 1x -background black"
 alias i1montage_concat_topbo_white="montage -mode concatenate -tile 1x -background white"
