@@ -1,6 +1,0 @@
-# DESC: Adds /usr/local/{bin,sbin} to $PATH
-
-localbin_off
-PATH=$PATH:/usr/local/bin:/usr/local/sbin
-
-# vim:ft=zsh:et
