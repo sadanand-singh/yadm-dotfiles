@@ -1,3 +1,4 @@
+tap "buo/cask-upgrade"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -31,6 +32,7 @@ brew "libpq"
 brew "lsd"
 brew "luarocks"
 brew "make"
+brew "mas"
 brew "neovim"
 brew "node"
 brew "openssl@3"
@@ -66,3 +68,12 @@ cask "font-monoid-nerd-font"
 cask "font-roboto-mono-for-powerline"
 cask "font-source-code-pro-for-powerline"
 cask "miniforge"
+mas "1Password 7", id: 1333542190
+mas "Amphetamine", id: 937984704
+mas "Fantastical", id: 975937182
+mas "Ghostery Lite", id: 1436953057
+mas "Save to Raindrop.io", id: 1549370672
+mas "Slack", id: 803453959
+mas "SonicWall Mobile Connect", id: 822514576
+mas "Spark", id: 1176895641
+mas "The Unarchiver", id: 425424353
