@@ -120,6 +120,9 @@ alias tree='tree -a -I .git'
 alias vi=nvim
 alias vim=nvim
 
+alias norg="gron --ungron"
+alias ungron="gron --ungron"
+
 function mkcd() {
     mkdir -p $1
     cd $1
@@ -316,3 +319,8 @@ unset __conda_setup
 alias py3="conda activate base"
 alias unload_py="conda deactivate"
 alias update_py="conda update --all"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(zoxide init zsh --cmd cd)"
+
