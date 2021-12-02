@@ -81,7 +81,7 @@ z4h source ~/.env.zsh
 z4h load   supercrabtree/k
 z4h load   esc/conda-zsh-completion
 z4h load   ohmyzsh/ohmyzsh/plugins/extract
-z4h load   ohmyzsh/ohmyzsh/plugins/osx
+z4h load   ohmyzsh/ohmyzsh/plugins/macos
 z4h load   ohmyzsh/ohmyzsh/plugins/universalarchive
 
 CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"

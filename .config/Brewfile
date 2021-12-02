@@ -49,6 +49,7 @@ brew "tree"
 brew "vim"
 brew "wget"
 brew "yadm"
+brew "yq"
 brew "z"
 brew "zlib"
 brew "zoxide"
@@ -68,10 +69,12 @@ cask "font-monoid-nerd-font"
 cask "font-roboto-mono-for-powerline"
 cask "font-source-code-pro-for-powerline"
 cask "miniforge"
+mas "1Blocker", id: 1365531024
 mas "1Password 7", id: 1333542190
 mas "Amphetamine", id: 937984704
 mas "Fantastical", id: 975937182
-mas "Ghostery Lite", id: 1436953057
+mas "Ghostery – Privacy Ad Blocker", id: 1436953057
+mas "Raindrop.io for Safari", id: 957810159
 mas "Save to Raindrop.io", id: 1549370672
 mas "Slack", id: 803453959
 mas "SonicWall Mobile Connect", id: 822514576
