@@ -56,16 +56,8 @@ z4h init || return
 
 # Extend PATH.
 path=(
-  /Library/TeX/texbin
-  /opt/homebrew/{bin,sbin}
+  $HOME/.local/bin
   /usr/local/{bin,sbin}
-  "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-  /usr/local/opt/openssl@1.1/bin
-  /usr/local/opt/openssl/bin
-  /usr/local/opt/sqlite/bin
-  /usr/local/opt/ruby/bin
-  /usr/local/opt/ncurses/bin
-  /usr/local/opt/curl/bin
   $path
 )
 
@@ -81,11 +73,8 @@ z4h source ~/.env.zsh
 z4h load   supercrabtree/k
 z4h load   esc/conda-zsh-completion
 z4h load   ohmyzsh/ohmyzsh/plugins/extract
-z4h load   ohmyzsh/ohmyzsh/plugins/osx
+z4h load   ohmyzsh/ohmyzsh/plugins/ubuntu
 z4h load   ohmyzsh/ohmyzsh/plugins/universalarchive
-
-CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
-z4h load   code-stats/code-stats-zsh
 
 # Define key bindings.
 z4h bindkey undo Ctrl+/  # undo the last command line change
@@ -150,37 +139,6 @@ function man() {
     man "$@"
 }
 
-function cdf() {
-    target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
-    if [ "$target" != "" ]; then
-        cd "$target"; pwd
-    else
-        echo 'No Finder window found' >&2
-    fi
-}
-
-function realpath()
-{
-  CURR_PATH=$(pwd)
-  TARGET_FILE=$1
-  cd $(dirname ${TARGET_FILE})
-  TARGET_FILE=$(basename ${TARGET_FILE})
-
-  # Iterate down a (possible) chain of symlinks
-  while [ -L "${TARGET_FILE}" ]
-  do
-      TARGET_FILE=$(readlink ${TARGET_FILE})
-      cd $(dirname ${TARGET_FILE})
-      TARGET_FILE=$(basename ${TARGET_FILE})
-  done
-
-  # Compute the canonicalized name by finding the physical path
-  # for the directory we're in and appending the target file.
-  PHYS_DIR=$(pwd -P)
-  RESULT=${PHYS_DIR}/${TARGET_FILE}
-  echo ${RESULT}
-  cd ${CURR_PATH}
-}
 
 sudo-command-line() {
     [[ -z $BUFFER ]] && zle up-history
@@ -259,10 +217,10 @@ alias df='df -h'  du='du -h'      cp='cp -v'   mv='mv -v'      plast="last -20"
 alias imgsize="identify -format '%w, %h\n'"
 
 # Quick typing
-alias n1ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias n1ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-alias n1sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias n1httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias sniff="sudo ngrep -d 'enp4s0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i enp4s0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 alias newest_ls="ls -lh --sort date -r --color=always | head -25"
 alias cpfile="rsync --progress"
@@ -289,9 +247,6 @@ whichcomp() {
     done
 }
 
-osxnotify() {
-    osascript -e 'display notification "'"$*"'"'
-}
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
@@ -299,21 +254,6 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # conda liases
 alias py3="conda activate base"
