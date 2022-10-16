@@ -46,6 +46,7 @@ zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 # example. If you don't plan to use Oh My Zsh, delete this line.
 z4h install ohmyzsh/ohmyzsh || return
 z4h install supercrabtree/k || return
+z4h install lukechilds/zsh-nvm || return
 z4h install esc/conda-zsh-completion || return
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
@@ -75,6 +76,7 @@ z4h load   esc/conda-zsh-completion
 z4h load   ohmyzsh/ohmyzsh/plugins/extract
 z4h load   ohmyzsh/ohmyzsh/plugins/ubuntu
 z4h load   ohmyzsh/ohmyzsh/plugins/universalarchive
+z4h load   lukechilds/zsh-nvm
 
 # Define key bindings.
 z4h bindkey undo Ctrl+/  # undo the last command line change
@@ -263,4 +265,20 @@ alias update_py="conda update --all"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(zoxide init zsh --cmd cd)"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sadanand/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sadanand/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sadanand/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sadanand/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
