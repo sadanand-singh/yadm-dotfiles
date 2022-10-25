@@ -1,0 +1,39 @@
+Spark.app
+Logi Options.app
+Visual Studio Code.app
+SonicWall Mobile Connect.app
+VLC.app
+DB Browser for SQLite.app
+CleanShot X.app
+Save to Raindrop.io.app
+Zotero.app
+Raycast.app
+Rectangle.app
+Google Chrome.app
+Bartender 4.app
+Install macOS Ventura.app
+Microsoft Remote Desktop.app
+Fantastical.app
+Spotify.app
+Microsoft Word.app
+1Blocker.app
+balenaEtcher.app
+Safari.app
+Amphetamine.app
+Arc.app
+Microsoft Excel.app
+Utilities/LogiMgr Uninstaller.app
+zoom.us.app
+Transmit.app
+Bitwarden.app
+Tunnelblick.app
+The Unarchiver.app
+iTerm.app
+AppCleaner.app
+Microsoft PowerPoint.app
+Mimestream.app
+PDF Expert.app
+DuckDuckGo.app
+Slack.app
+Raindrop.io for Safari.app
+Ghostery – Privacy Ad Blocker.app

@@ -1,0 +1,12 @@
+Spark.app
+SonicWall Mobile Connect.app
+Save to Raindrop.io.app
+Microsoft Remote Desktop.app
+Fantastical.app
+1Blocker.app
+Amphetamine.app
+Bitwarden.app
+The Unarchiver.app
+Slack.app
+Raindrop.io for Safari.app
+Ghostery – Privacy Ad Blocker.app
