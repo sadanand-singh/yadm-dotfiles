@@ -56,6 +56,7 @@ z4h init || return
 
 # Extend PATH.
 path=(
+  /opt/homebrew/opt/node@16/bin
   /Library/TeX/texbin
   /opt/homebrew/{bin,sbin}
   /usr/local/{bin,sbin}
@@ -324,3 +325,5 @@ alias update_py="conda update --all"
 
 eval "$(zoxide init zsh --cmd cd)"
 
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
