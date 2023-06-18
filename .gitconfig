@@ -14,6 +14,7 @@
     status = true
 [push]
     default = matching
+	autoSetupRemote = true
 [diff]
     tool = vscode
 [difftool]

@@ -47,6 +47,7 @@ zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 z4h install ohmyzsh/ohmyzsh || return
 z4h install supercrabtree/k || return
 z4h install esc/conda-zsh-completion || return
+z4h install lukechilds/zsh-nvm || return
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
@@ -58,8 +59,10 @@ z4h init || return
 path=(
   /opt/homebrew/opt/node@16/bin
   /Library/TeX/texbin
+  $HOME/.cargo/bin
   /opt/homebrew/{bin,sbin}
   /usr/local/{bin,sbin}
+  /opt/homebrew/opt/coreutils/libexec/gnubin
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
   /usr/local/opt/openssl@1.1/bin
   /usr/local/opt/openssl/bin
@@ -84,6 +87,7 @@ z4h load   esc/conda-zsh-completion
 z4h load   ohmyzsh/ohmyzsh/plugins/extract
 z4h load   ohmyzsh/ohmyzsh/plugins/macos
 z4h load   ohmyzsh/ohmyzsh/plugins/universalarchive
+z4h load   lukechilds/zsh-nvm
 
 CODESTATS_API_KEY="SFMyNTY.YzJGa1lXNWhibVF0YzJsdVoyZz0jI05UZ3lOQT09.uVT5g3YcHPPkcAyOJegZsr_gS_xKTDP4vjr3gqoKVOI"
 z4h load   code-stats/code-stats-zsh
@@ -324,6 +328,13 @@ alias update_py="conda update --all"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(zoxide init zsh --cmd cd)"
+eval "$(/usr/libexec/path_helper)"
+source "$HOME/.cargo/env"
 
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# pnpm
+export PNPM_HOME="/Users/sadanand/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
